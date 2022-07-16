@@ -10,16 +10,20 @@ import (
 var targetNumber int = 0
 
 func main() {
+
 	CreateNewGame()
 }
 
 func CreateNewGame() {
+	// create new game with new random number
+
 	targetNumber = rand.Intn(9999-1000) + 1000
 	fmt.Println("The new game has begun.")
 	NumberGuess()
 }
 
 func NumberGuess() {
+
 	var guessedNumbers []map[string]string
 
 	for true {
@@ -45,6 +49,7 @@ func NumberGuess() {
 		trueGuesses := 0
 		falseGuesses := 0
 		for i := 0; i < 4; i++ {
+			// try to find an index of target number
 			foundIndex := strings.Index(sTargetNumber, string(sNumber[i]))
 			if foundIndex != -1 {
 				if foundIndex == i {
@@ -54,6 +59,8 @@ func NumberGuess() {
 				}
 			}
 		}
+
+		//try a new object which has created properties of guessed number
 		guessed := make(map[string]string)
 		guessed["entered"] = sNumber
 		guessed["result"] = ""
@@ -68,18 +75,20 @@ func NumberGuess() {
 
 		}
 		guessedNumbers = append(guessedNumbers, guessed)
-
+		//append to created slice and list them
 		for _, item := range guessedNumbers {
 			fmt.Printf("Entered Number : %s , Guess Result is :%s \n", item["entered"], item["result"])
 		}
 		if trueGuesses == 4 {
+			// if the guessed numbers count is four it should be to user
 			fmt.Println("You have won!")
-			return
+			break
 		} else {
 
 			fmt.Println("try again!")
 		}
 
 	}
+	return
 
 }
