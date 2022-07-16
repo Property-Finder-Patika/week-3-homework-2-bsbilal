@@ -28,6 +28,10 @@ func main() {
 	}
 
 	SetRectangleArea(&newRectangle)
+	SetRectangleCircumference(&newRectangle)
+
+	fmt.Println("The given rectangle sizes are")
+	fmt.Printf("Circumference is :%f and area is:%f", newRectangle.circumference, newRectangle.circumference)
 
 }
 func CreateRectangle(arr []string) (error, Rectangle) {
@@ -52,5 +56,10 @@ func CreateRectangle(arr []string) (error, Rectangle) {
 
 func SetRectangleArea(r *Rectangle) {
 	r.area = r.aSide * r.bSide
+	return
+}
+
+func SetRectangleCircumference(r *Rectangle) {
+	r.circumference = r.aSide*2 + r.bSide*2
 	return
 }
